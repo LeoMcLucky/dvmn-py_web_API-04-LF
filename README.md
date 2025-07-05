@@ -31,23 +31,23 @@ pip install -r requirements.txt
 
 1. Скрипт `fetch_spacex_images.py` скачивает в директорию проекта фотографии запуска ракет SpaceX по введенному ID, либо последние - по умолчанию.
 
-![SpaceX](<SpaceX.gif>)
+![SpaceX](<gif/SpaceX.gif>)
 
 3. Скрипт `fetch_nasa_apod_images.py` скачивает в директорию проекта 30 случайных фотографии дня космоса от NASA APOD.
 
-![APOD](NASA_APOD.gif)
+![APOD](gif/NASA_APOD.gif)
 
 4. Скрипт `fetch_nasa_epic_images.py` скачивает в директорию проекта 10 последних фотографии земли NASA EPIC.
 
-![EPIC](NASA_EPIC.gif)
+![EPIC](gif/NASA_EPIC.gif)
 
 5. Скрипт `tg_publish_image.py` публикует в указанном телеграм канале выбранную фотографию по её пути.
 
-![tg_manual](tg_publish.gif)
+![tg_manual](gif/tg_publish.gif)
 
 6. Скрипт `tg_auto_publish_images.py` автоматически публикует фотографии из указанной директории в указанный телеграм канал.
 
-![tg_auto](tg_auto.gif)
+![tg_auto](gif/tg_auto.gif)
 
 ### Цель проекта
 
