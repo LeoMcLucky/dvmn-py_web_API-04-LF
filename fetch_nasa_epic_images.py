@@ -5,7 +5,8 @@ from dotenv import load_dotenv
 from pathlib import Path
 
 
-def fetch_nasa_epic_images(url_epic, api_key_nasa, path_dir):
+def fetch_nasa_epic_images(api_key_nasa, path_dir):
+    url_epic = 'https://api.nasa.gov/EPIC/api/natural/images'
     payload = {
         'api_key': api_key_nasa,
     }
@@ -26,10 +27,9 @@ def fetch_nasa_epic_images(url_epic, api_key_nasa, path_dir):
 def main():
     load_dotenv()
     api_key_nasa = os.environ['API_KEY_NASA']
-    url_epic = 'https://api.nasa.gov/EPIC/api/natural/images'
     path_dir_epic = Path('Space_images/Nasa_EPIC_images')
     path_dir_epic.mkdir(parents=True, exist_ok=True)
-    fetch_nasa_epic_images(url_epic, api_key_nasa, path_dir_epic)
+    fetch_nasa_epic_images(api_key_nasa, path_dir_epic)
 
 
 if __name__ == "__main__":
