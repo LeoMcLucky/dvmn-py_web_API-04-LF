@@ -5,12 +5,12 @@ from pathlib import Path
 from get_file_data import get_file_extension
 
 
-def fetch_nasa_images(url_NASA, api_key_NASA, path_dir):
+def fetch_nasa_images(url_nasa, api_key_nasa, path_dir):
     payload = {
-        'api_key': api_key_NASA,
+        'api_key': api_key_nasa,
         'count': 30,
     }
-    response = requests.get(url_NASA, params=payload)
+    response = requests.get(url_nasa, params=payload)
     response.raise_for_status()
     img_urls = response.json()
     for number, img_url in enumerate(img_urls):
@@ -23,11 +23,11 @@ def fetch_nasa_images(url_NASA, api_key_NASA, path_dir):
 
 def main():
     load_dotenv()
-    api_key_NASA = os.environ['API_KEY_NASA']
-    url_NASA = 'https://api.nasa.gov/planetary/apod'
-    path_dir_NASA = Path('Space_images/Nasa_images')
-    path_dir_NASA.mkdir(parents=True, exist_ok=True)
-    fetch_nasa_images(url_NASA, api_key_NASA, path_dir_NASA)
+    api_key_nasa = os.environ['API_KEY_NASA']
+    url_nasa = 'https://api.nasa.gov/planetary/apod'
+    path_dir_nasa = Path('Space_images/NASA_images')
+    path_dir_nasa.mkdir(parents=True, exist_ok=True)
+    fetch_nasa_images(url_nasa, api_key_nasa, path_dir_nasa)
 
 
 if __name__ == "__main__":

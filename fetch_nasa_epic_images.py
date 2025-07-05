@@ -5,11 +5,11 @@ from dotenv import load_dotenv
 from pathlib import Path
 
 
-def fetch_nasa_epic_images(url_EPIC, api_key_NASA, path_dir):
+def fetch_nasa_epic_images(url_epic, api_key_nasa, path_dir):
     payload = {
-        'api_key': api_key_NASA,
+        'api_key': api_key_nasa,
     }
-    response = requests.get(url_EPIC, params=payload)
+    response = requests.get(url_epic, params=payload)
     response.raise_for_status()
     info_photos = response.json()
     for number, info_photo in enumerate(info_photos[:10]):
@@ -25,11 +25,11 @@ def fetch_nasa_epic_images(url_EPIC, api_key_NASA, path_dir):
 
 def main():
     load_dotenv()
-    api_key_NASA = os.environ['API_KEY_NASA']
-    url_EPIC = 'https://api.nasa.gov/EPIC/api/natural/images'
-    path_dir_EPIC = Path('Space_images/Nasa_EPIC_images')
-    path_dir_EPIC.mkdir(parents=True, exist_ok=True)
-    fetch_nasa_epic_images(url_EPIC, api_key_NASA, path_dir_EPIC)
+    api_key_nasa = os.environ['API_KEY_NASA']
+    url_epic = 'https://api.nasa.gov/EPIC/api/natural/images'
+    path_dir_epic = Path('Space_images/Nasa_EPIC_images')
+    path_dir_epic.mkdir(parents=True, exist_ok=True)
+    fetch_nasa_epic_images(url_epic, api_key_nasa, path_dir_epic)
 
 
 if __name__ == "__main__":
