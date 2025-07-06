@@ -7,9 +7,10 @@ from get_file_data import get_file_extension
 
 def fetch_nasa_images(api_key_nasa, path_dir):
     url_nasa = 'https://api.nasa.gov/planetary/apod'
+    total_photos = 30
     payload = {
         'api_key': api_key_nasa,
-        'count': 30,
+        'count': total_photos,
     }
     response = requests.get(url_nasa, params=payload)
     response.raise_for_status()
