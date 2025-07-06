@@ -4,7 +4,7 @@ import argparse
 import os
 from dotenv import load_dotenv
 from pathlib import Path
-from get_file_data import get_paths_images
+from image_utils import get_paths_images
 
 
 def parse_input():

@@ -3,6 +3,7 @@ import datetime
 import os
 from dotenv import load_dotenv
 from pathlib import Path
+from image_utils import get_file_extension, download_img_for_url
 
 
 def fetch_nasa_epic_images(api_key_nasa, path_dir):
@@ -18,10 +19,9 @@ def fetch_nasa_epic_images(api_key_nasa, path_dir):
         img_date = datetime.date.fromisoformat(
             img_datetime.split()[0]).strftime("%Y/%m/%d")
         img_url = f'https://api.nasa.gov/EPIC/archive/natural/{img_date}/png/{img_name}.png'
-        image_response = requests.get(img_url, params=payload)
-        image_response.raise_for_status()
-        with open(path_dir / f'EPIC_{number}.png', 'wb') as file:
-            file.write(image_response.content)
+        file_ext = get_file_extension(img_url)
+        file_name = f'EPIC_{number}{file_ext}'
+        download_img_for_url(img_url, path_dir, file_name, params=payload)
 
 
 def main():

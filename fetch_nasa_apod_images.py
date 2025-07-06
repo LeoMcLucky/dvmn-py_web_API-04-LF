@@ -2,7 +2,7 @@ import requests
 import os
 from dotenv import load_dotenv
 from pathlib import Path
-from get_file_data import get_file_extension
+from image_utils import get_file_extension, download_img_for_url
 
 
 def fetch_nasa_images(api_key_nasa, path_dir):
@@ -16,11 +16,10 @@ def fetch_nasa_images(api_key_nasa, path_dir):
     response.raise_for_status()
     img_urls = response.json()
     for number, img_url in enumerate(img_urls):
-        file_ext = get_file_extension(img_url['hdurl'])
-        image_response = requests.get(img_url['hdurl'])
-        image_response.raise_for_status()
-        with open(path_dir / f'NASA_{number}{file_ext}', 'wb') as file:
-            file.write(image_response.content)
+        hd_img_url = img_url['hdurl']
+        file_ext = get_file_extension(hd_img_url)
+        file_name = f'NASA_{number}{file_ext}'
+        download_img_for_url(hd_img_url, path_dir, file_name)
 
 
 def main():

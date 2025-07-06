@@ -1,7 +1,7 @@
 import requests
 import argparse
 from pathlib import Path
-from get_file_data import get_file_extension
+from image_utils import get_file_extension, download_img_for_url
 
 
 def parse_input():
@@ -27,10 +27,8 @@ def fetch_spacex_launch(url_spaceX, path_dir):
     list_url_images = response.json()['links']['flickr']['original']
     for number, url_image in enumerate(list_url_images):
         file_ext = get_file_extension(url_image)
-        image_response = requests.get(url_image)
-        image_response.raise_for_status()
-        with open(path_dir / f'spaceX_{number}{file_ext}', 'wb') as file:
-            file.write(image_response.content)
+        file_name = f'spaceX_{number}{file_ext}'
+        download_img_for_url(url_image, path_dir, file_name)
 
 
 def main():

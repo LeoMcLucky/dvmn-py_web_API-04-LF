@@ -1,3 +1,4 @@
+import requests
 import os
 from pathlib import Path
 from urllib.parse import urlsplit, unquote
@@ -18,3 +19,10 @@ def get_paths_images(path_dir):
                 file_path = Path(dirpath) / filename
                 paths_all_images.append(file_path)
     return paths_all_images
+
+
+def download_img_for_url(img_url, path_dir, file_name, params=None):
+    image_response = requests.get(img_url, params=params)
+    image_response.raise_for_status()
+    with open(path_dir / file_name, 'wb') as file:
+        file.write(image_response.content)
