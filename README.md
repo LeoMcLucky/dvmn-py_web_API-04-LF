@@ -10,7 +10,9 @@
 
 Для работы с телеграм ботом Вам необходимо его создать и получить его токен [BotFather](https://telegram.me/BotFather).
 Также необходимо получить [API_KEY_NASA](https://api.nasa.gov) для скачивания фотографий.
-Рекомендуем создать локально файл `.env` с требуемыми секретными данными.
+Затем необходимо создать локально файл `.env` с требуемыми секретными данными:  
+`TELEGRAM_BOT_TOKEN=your_bot_token_here`
+`API_KEY_NASA=your_api_key_here`
 
 Рекомендуется использовать [virtualenv/venv](https://docs.python.org/3/library/venv.html) для изоляции проекта. 
 

@@ -18,7 +18,7 @@ def parse_input():
         ),
         epilog=(
             "Для работы требуется .env файл:\n."
-            "TELEGRAM_TOKEN=your_bot_token_here\n"
+            "TELEGRAM_BOT_TOKEN=your_bot_token_here\n"
             "А также 'chat_id' канала или чата указывается прямо в коде или добавляется в .env."
         ),
         formatter_class=argparse.RawDescriptionHelpFormatter
@@ -48,7 +48,7 @@ def tg_publish_image(tg_bot_token, img_path, path_dir):
 def main():
     img_path = parse_input()
     load_dotenv()
-    tg_bot_token = os.environ['TELEGRAM_TOKEN']
+    tg_bot_token = os.environ['TELEGRAM_BOT_TOKEN']
     path_dir = Path('Space_images')
     tg_publish_image(tg_bot_token, img_path, path_dir)
 

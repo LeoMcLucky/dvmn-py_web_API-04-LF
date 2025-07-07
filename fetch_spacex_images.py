@@ -29,11 +29,11 @@ def parse_input():
 def fetch_spacex_launch(url_spaceX, path_dir):
     response = requests.get(url_spaceX)
     response.raise_for_status()
-    url_images = response.json()['links']['flickr']['original']
-    for number, url_image in enumerate(url_images):
-        file_ext = get_file_extension(url_image)
+    images_urls = response.json()['links']['flickr']['original']
+    for number, image_url in enumerate(images_urls):
+        file_ext = get_file_extension(image_url)
         file_name = f'spaceX_{number}{file_ext}'
-        download_img_for_url(url_image, path_dir, file_name)
+        download_img_for_url(image_url, path_dir, file_name)
 
 
 def main():
