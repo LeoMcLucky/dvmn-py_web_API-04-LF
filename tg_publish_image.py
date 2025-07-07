@@ -10,13 +10,22 @@ from image_utils import get_paths_images
 def parse_input():
     parser = argparse.ArgumentParser(
         description=(
-            "Укажите путь желаемой фотографий"
-            "По умолчанию - случайная фотография"
-        )
+            "Эта программа публикует в указанном телеграм канале выбранную фотографию по её пути.\n"
+            "Если путь не указан, то публикует рандомную фотографию из директория программы.\n\n"
+            "Примеры использования:\n"
+            "python tg_publish_image.py\n"
+            "python tg_publish_image.py 'Space_images/you_image.png'\n"
+        ),
+        epilog=(
+            "Для работы требуется .env файл:\n."
+            "TELEGRAM_TOKEN=your_bot_token_here\n"
+            "А также 'chat_id' канала или чата указывается прямо в коде или добавляется в .env."
+        ),
+        formatter_class=argparse.RawDescriptionHelpFormatter
     )
     parser.add_argument(
         'img_path',
-        help='id_spaceX',
+        help="Путь к изображению (если не указан — выберется рандомная фотография)",
         nargs='?',
         default=''
     )
