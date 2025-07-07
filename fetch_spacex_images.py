@@ -29,8 +29,8 @@ def parse_input():
 def fetch_spacex_launch(url_spaceX, path_dir):
     response = requests.get(url_spaceX)
     response.raise_for_status()
-    list_url_images = response.json()['links']['flickr']['original']
-    for number, url_image in enumerate(list_url_images):
+    url_images = response.json()['links']['flickr']['original']
+    for number, url_image in enumerate(url_images):
         file_ext = get_file_extension(url_image)
         file_name = f'spaceX_{number}{file_ext}'
         download_img_for_url(url_image, path_dir, file_name)
