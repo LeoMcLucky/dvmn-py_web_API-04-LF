@@ -36,13 +36,13 @@ def parse_input():
 
 
 def tg_publish_images(tg_bot_token, time_period, path_dir, tg_chat_id):
+    bot = telegram.Bot(token=tg_bot_token)
     while True:
         paths_images = get_paths_images(path_dir)
         random.shuffle(paths_images)
         for path_image in paths_images:
-            bot = telegram.Bot(token=tg_bot_token)
-            bot.send_document(chat_id=tg_chat_id,
-                              document=open(path_image, 'rb'))
+            with open(path_image, "rb") as my_file:
+                bot.send_document(chat_id=tg_chat_id, document=my_file)
             time.sleep(time_period)
 
 
