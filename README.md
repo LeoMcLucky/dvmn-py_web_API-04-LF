@@ -13,7 +13,7 @@
 Затем необходимо создать локально файл `.env` с требуемыми секретными данными:  
 `TELEGRAM_BOT_TOKEN=your_bot_token_here`
 `API_KEY_NASA=your_api_key_here`
-
+`TELEGRAM_CHAT_ID=you_chat_id_here`
 Рекомендуется использовать [virtualenv/venv](https://docs.python.org/3/library/venv.html) для изоляции проекта. 
 
 Для запуска необходима версия [Python 3.11.*](https://www.python.org/downloads/) и младше 3.10.* так-как модуль imghdr, встроенный в старые версии Python, удалён в Python 3.13. А библиотека python-telegram-bot, всё ещё зависит от него.

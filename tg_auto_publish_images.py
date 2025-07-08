@@ -35,13 +35,13 @@ def parse_input():
     return args.time_period
 
 
-def tg_publish_images(tg_bot_token, time_period, path_dir):
+def tg_publish_images(tg_bot_token, time_period, path_dir, tg_chat_id):
     while True:
         paths_images = get_paths_images(path_dir)
         random.shuffle(paths_images)
         for path_image in paths_images:
             bot = telegram.Bot(token=tg_bot_token)
-            bot.send_document(chat_id='@NewInterStellar',
+            bot.send_document(chat_id=tg_chat_id,
                               document=open(path_image, 'rb'))
             time.sleep(time_period)
 
@@ -50,8 +50,9 @@ def main():
     time_period = parse_input()
     load_dotenv()
     tg_bot_token = os.environ['TELEGRAM_BOT_TOKEN']
+    tg_chat_id = os.getenv('TELEGRAM_CHAT_ID')
     path_dir = Path('Space_images')
-    tg_publish_images(tg_bot_token, time_period, path_dir)
+    tg_publish_images(tg_bot_token, time_period, path_dir, tg_chat_id)
 
 
 if __name__ == '__main__':

@@ -33,7 +33,7 @@ def parse_input():
     return args.img_path
 
 
-def tg_publish_image(tg_bot_token, img_path, path_dir):
+def tg_publish_image(tg_bot_token, img_path, path_dir, tg_chat_id):
     if not img_path:
         paths_images = get_paths_images(path_dir)
         path_image = random.choice(paths_images)
@@ -41,7 +41,7 @@ def tg_publish_image(tg_bot_token, img_path, path_dir):
         path_image = img_path
 
     bot = telegram.Bot(token=tg_bot_token)
-    bot.send_document(chat_id='@NewInterStellar',
+    bot.send_document(chat_id=tg_chat_id,
                       document=open(path_image, 'rb'))
 
 
@@ -49,8 +49,9 @@ def main():
     img_path = parse_input()
     load_dotenv()
     tg_bot_token = os.environ['TELEGRAM_BOT_TOKEN']
+    tg_chat_id = os.getenv('TELEGRAM_CHAT_ID')
     path_dir = Path('Space_images')
-    tg_publish_image(tg_bot_token, img_path, path_dir)
+    tg_publish_image(tg_bot_token, img_path, path_dir, tg_chat_id)
 
 
 if __name__ == '__main__':
