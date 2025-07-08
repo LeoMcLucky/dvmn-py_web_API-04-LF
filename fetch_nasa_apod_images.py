@@ -2,7 +2,7 @@ import requests
 import os
 from dotenv import load_dotenv
 from pathlib import Path
-from image_utils import get_file_extension, download_img_for_url
+from images_utils import get_file_extension, download_img_for_url
 
 
 def fetch_nasa_images(api_key_nasa, path_dir):

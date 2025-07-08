@@ -1,7 +1,7 @@
 import requests
 import argparse
 from pathlib import Path
-from image_utils import get_file_extension, download_img_for_url
+from images_utils import get_file_extension, download_img_for_url
 
 
 def parse_input():
