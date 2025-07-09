@@ -41,8 +41,8 @@ def tg_publish_images(tg_bot_token, time_period, path_dir, tg_chat_id):
         paths_images = get_paths_images(path_dir)
         random.shuffle(paths_images)
         for path_image in paths_images:
-            with open(path_image, "rb") as my_file:
-                bot.send_document(chat_id=tg_chat_id, document=my_file)
+            with open(path_image, "rb") as file:
+                bot.send_document(chat_id=tg_chat_id, document=file)
             time.sleep(time_period)
 
 

@@ -41,8 +41,8 @@ def tg_publish_image(tg_bot_token, img_path, path_dir, tg_chat_id):
         path_image = img_path
 
     bot = telegram.Bot(token=tg_bot_token)
-    with open(path_image, "rb") as my_file:
-        bot.send_document(chat_id=tg_chat_id, document=my_file)
+    with open(path_image, "rb") as file:
+        bot.send_document(chat_id=tg_chat_id, document=file)
 
 
 def main():
